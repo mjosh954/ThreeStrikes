@@ -246,7 +246,6 @@ namespace ThreeStrikes
 
         private double SelectPanelProbability()
         {
-            const double numPanels = 5;
             double numOfX = 0;
             double numOfNums = 0;
 
@@ -254,8 +253,6 @@ namespace ThreeStrikes
             {
                 if (panelLabel.Text == "X")
                     numOfX++;
-                else
-                    numOfNums++;
             }
 
             return 1 / numOfX;
