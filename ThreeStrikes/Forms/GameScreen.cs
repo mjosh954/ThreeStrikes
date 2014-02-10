@@ -121,18 +121,21 @@ namespace ThreeStrikes
         private void AddStrike()
         {
             strikeCount++;
-            lblStrikes.Text = string.Format("Strikes: {0}", strikeCount);
-            lblStrike.Visible = true;
-            
+
             if (strikeCount == 3)
             {
                 GameOver(false);
             }
-
-            Timer tmr = new Timer();
-            tmr.Interval = 3000;
-            tmr.Tick += (sender, args) => { lblStrike.Visible = false; };
-            tmr.Start();
+            else
+            {
+                // Display strike and then disappear 
+                lblStrikes.Text = string.Format("Strikes: {0}", strikeCount);
+                lblStrike.Visible = true;
+                Timer tmr = new Timer();
+                tmr.Interval = 3000;
+                tmr.Tick += (sender, args) => { lblStrike.Visible = false; };
+                tmr.Start();
+            }
         }
 
 
