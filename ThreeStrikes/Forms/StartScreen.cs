@@ -34,7 +34,10 @@ namespace ThreeStrikes.Forms
             Player player = new Player(txtName.Text);
 
             GameScreen game = new GameScreen(player);
+            Visible = false;
             game.ShowDialog();
+            Visible = true;
+            BringToFront();
         }
 
     }
