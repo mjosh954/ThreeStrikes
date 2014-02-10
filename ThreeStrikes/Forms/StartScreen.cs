@@ -33,7 +33,7 @@ namespace ThreeStrikes.Forms
 
             Player player = new Player(txtName.Text);
 
-            Game game = new Game(player);
+            GameScreen game = new GameScreen(player);
             game.ShowDialog();
         }
 

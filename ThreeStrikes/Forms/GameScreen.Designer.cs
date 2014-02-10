@@ -1,6 +1,6 @@
 ﻿namespace ThreeStrikes
 {
-    partial class Game
+    partial class GameScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -41,6 +41,11 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.btnHowToPlay = new System.Windows.Forms.Button();
+            this.lblProbabilityTitle = new System.Windows.Forms.Label();
+            this.lblPickingNumber = new System.Windows.Forms.Label();
+            this.lblPickStrike = new System.Windows.Forms.Label();
+            this.lblPickCorPanel = new System.Windows.Forms.Label();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.SuspendLayout();
             // 
             // btnPick
@@ -128,7 +133,7 @@
             // 
             this.lblOnHand.AutoSize = true;
             this.lblOnHand.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.lblOnHand.Location = new System.Drawing.Point(150, 313);
+            this.lblOnHand.Location = new System.Drawing.Point(152, 293);
             this.lblOnHand.Name = "lblOnHand";
             this.lblOnHand.Size = new System.Drawing.Size(137, 31);
             this.lblOnHand.TabIndex = 8;
@@ -140,7 +145,7 @@
             this.lblStrike.AutoSize = true;
             this.lblStrike.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
             this.lblStrike.ForeColor = System.Drawing.Color.Crimson;
-            this.lblStrike.Location = new System.Drawing.Point(250, 229);
+            this.lblStrike.Location = new System.Drawing.Point(249, 214);
             this.lblStrike.Name = "lblStrike";
             this.lblStrike.Size = new System.Drawing.Size(166, 63);
             this.lblStrike.TabIndex = 9;
@@ -153,6 +158,7 @@
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape1,
             this.rectangleShape2});
             this.shapeContainer1.Size = new System.Drawing.Size(676, 442);
             this.shapeContainer1.TabIndex = 10;
@@ -175,12 +181,60 @@
             this.btnHowToPlay.UseVisualStyleBackColor = true;
             this.btnHowToPlay.Click += new System.EventHandler(this.btnHowToPlay_Click);
             // 
+            // lblProbabilityTitle
+            // 
+            this.lblProbabilityTitle.AutoSize = true;
+            this.lblProbabilityTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblProbabilityTitle.Location = new System.Drawing.Point(482, 276);
+            this.lblProbabilityTitle.Name = "lblProbabilityTitle";
+            this.lblProbabilityTitle.Size = new System.Drawing.Size(162, 31);
+            this.lblProbabilityTitle.TabIndex = 12;
+            this.lblProbabilityTitle.Text = "Probabilities";
+            // 
+            // lblPickingNumber
+            // 
+            this.lblPickingNumber.AutoSize = true;
+            this.lblPickingNumber.Location = new System.Drawing.Point(485, 324);
+            this.lblPickingNumber.Name = "lblPickingNumber";
+            this.lblPickingNumber.Size = new System.Drawing.Size(85, 13);
+            this.lblPickingNumber.TabIndex = 13;
+            this.lblPickingNumber.Text = "Draw a number: ";
+            // 
+            // lblPickStrike
+            // 
+            this.lblPickStrike.AutoSize = true;
+            this.lblPickStrike.Location = new System.Drawing.Point(485, 346);
+            this.lblPickStrike.Name = "lblPickStrike";
+            this.lblPickStrike.Size = new System.Drawing.Size(75, 13);
+            this.lblPickStrike.TabIndex = 14;
+            this.lblPickStrike.Text = "Draw a strike: ";
+            // 
+            // lblPickCorPanel
+            // 
+            this.lblPickCorPanel.AutoSize = true;
+            this.lblPickCorPanel.Location = new System.Drawing.Point(485, 368);
+            this.lblPickCorPanel.Name = "lblPickCorPanel";
+            this.lblPickCorPanel.Size = new System.Drawing.Size(105, 13);
+            this.lblPickCorPanel.TabIndex = 15;
+            this.lblPickCorPanel.Text = "Select correct panel:";
+            // 
+            // rectangleShape1
+            // 
+            this.rectangleShape1.CornerRadius = 5;
+            this.rectangleShape1.Location = new System.Drawing.Point(479, 274);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.Size = new System.Drawing.Size(170, 117);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(676, 442);
+            this.Controls.Add(this.lblPickCorPanel);
+            this.Controls.Add(this.lblPickStrike);
+            this.Controls.Add(this.lblPickingNumber);
+            this.Controls.Add(this.lblProbabilityTitle);
             this.Controls.Add(this.btnHowToPlay);
             this.Controls.Add(this.lblStrike);
             this.Controls.Add(this.lblOnHand);
@@ -218,5 +272,10 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
         private System.Windows.Forms.Button btnHowToPlay;
+        private System.Windows.Forms.Label lblProbabilityTitle;
+        private System.Windows.Forms.Label lblPickingNumber;
+        private System.Windows.Forms.Label lblPickStrike;
+        private System.Windows.Forms.Label lblPickCorPanel;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
     }
 }

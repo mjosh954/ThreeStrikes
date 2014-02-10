@@ -15,13 +15,20 @@ using ThreeStrikes.Forms;
 
 namespace ThreeStrikes
 {
-    public partial class Game : Form
+    public partial class GameScreen : Form
     {
         private readonly Player player;
         private Bag bag;
         private Prize prize;
         private int strikeCount;
         private PrizePanel prizePanel;
+        private List<Label> panelLabels; 
+        public GameScreen(Player player)
+        {
+            InitializeComponent();
+            this.player = player;
+            RestartGame();
+        }
 
         public void RestartGame()
         {
@@ -38,13 +45,59 @@ namespace ThreeStrikes
             ResetStrikes();
             bag = new Bag(prize.Value);
             HideOnHand();
+            SetProbabilites();
+            panelLabels = new List<Label>();
+            panelLabels.Add(lblPanel0);
+            panelLabels.Add(lblPanel1);
+            panelLabels.Add(lblPanel2);
+            panelLabels.Add(lblPanel3);
+            panelLabels.Add(lblPanel4);
         }
 
-        public Game(Player player)
+        private void SetProbabilites()
         {
-            InitializeComponent();
-            this.player = player;
-            RestartGame();
+            double strikeProb = SelectStrikeProbability();
+            double numProb = SelectNumberProbability();
+            lblPickStrike.Text = string.Format("Draw a strike: {0}%", Math.Round(strikeProb * 100, 2));
+            lblPickingNumber.Text = string.Format("Draw a number: {0}%", Math.Round(numProb * 100, 2));
+        }
+
+        private double SelectStrikeProbability()
+        {
+            int strikes=0;
+            int numbers=0;
+            foreach (Disk disk in bag)
+            {
+                if (disk as NumberDisk != null)
+                {
+                    numbers++;
+                }
+                else
+                {
+                    strikes++;
+                }
+            }
+
+            return (double)strikes / bag.Count;
+        }
+
+        private double SelectNumberProbability()
+        {
+            int strikes = 0;
+            int numbers = 0;
+            foreach (Disk disk in bag)
+            {
+                if (disk as NumberDisk != null)
+                {
+                    numbers++;
+                }
+                else
+                {
+                    strikes++;
+                }
+            }
+
+            return (double)numbers / bag.Count;
         }
 
         private void ShowOnHand(NumberDisk onHand)
@@ -78,6 +131,11 @@ namespace ThreeStrikes
             lblPanel4.Click -= lblPanel4_Click;
             HideOnHand();
             btnPick.Visible = true;
+            try
+            {
+                SetProbabilites();
+            }
+            catch { }
         }
 
         private void SetPrizeValuePanel(int prizeValue)
@@ -105,7 +163,6 @@ namespace ThreeStrikes
                 Prizes.Add(new Prize(prizeName, int.Parse(prizeValue)));
             }
 
-            // BUG Prizes not being shuffled
             Random rand = new Random();
             Prizes = Prizes.OrderBy(p => rand.Next()).ToList();
 
@@ -138,8 +195,6 @@ namespace ThreeStrikes
             }
         }
 
-
-
         private void GameOver(bool win)
         {
             DialogResult diag = MessageBox.Show(win ? "Congratulations, you win" : "Game Over", "Try Again?", MessageBoxButtons.YesNo);
@@ -157,6 +212,7 @@ namespace ThreeStrikes
             string strPrize = prize.Value.ToString();
             string check = lblPanel0.Text + lblPanel1.Text + lblPanel2.Text + lblPanel3.Text + lblPanel4.Text;
 
+            SetPanelProbability();
             if(strPrize == check)
                 GameOver(true);
         }
@@ -171,13 +227,38 @@ namespace ThreeStrikes
             {
                 AddStrike();
                 bag.Shuffle();
+                SetProbabilites();
                 return;
             }
-
+            SetProbabilites();
+            SetPanelProbability();
             player.OnHand = disk as NumberDisk;
             ShowOnHand(player.OnHand);
             AddHandlers();
 
+        }
+
+        private void SetPanelProbability()
+        {
+            double prob = SelectPanelProbability();
+            lblPickCorPanel.Text = string.Format("Select correct panel: {0}%", Math.Round(prob*100, 2));
+        }
+
+        private double SelectPanelProbability()
+        {
+            const double numPanels = 5;
+            double numOfX = 0;
+            double numOfNums = 0;
+
+            foreach (Label panelLabel in panelLabels)
+            {
+                if (panelLabel.Text == "X")
+                    numOfX++;
+                else
+                    numOfNums++;
+            }
+
+            return 1 / numOfX;
         }
 
         private void lblPanel0_Click(object sender, EventArgs e)
@@ -246,7 +327,6 @@ namespace ThreeStrikes
             }
             else
                 bag.Add(player.OnHand);
-
 
             player.OnHand = null;
             RemoveHandlers();
