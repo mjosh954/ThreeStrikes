@@ -1,4 +1,4 @@
-﻿namespace ThreeStrikes
+﻿namespace ThreeStrikes.Forms
 {
     partial class GameScreen
     {
@@ -39,13 +39,14 @@
             this.lblOnHand = new System.Windows.Forms.Label();
             this.lblStrike = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.btnHowToPlay = new System.Windows.Forms.Button();
             this.lblProbabilityTitle = new System.Windows.Forms.Label();
             this.lblPickingNumber = new System.Windows.Forms.Label();
             this.lblPickStrike = new System.Windows.Forms.Label();
             this.lblPickCorPanel = new System.Windows.Forms.Label();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.linkGithub = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // btnPick
@@ -164,6 +165,13 @@
             this.shapeContainer1.TabIndex = 10;
             this.shapeContainer1.TabStop = false;
             // 
+            // rectangleShape1
+            // 
+            this.rectangleShape1.CornerRadius = 5;
+            this.rectangleShape1.Location = new System.Drawing.Point(479, 274);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.Size = new System.Drawing.Size(170, 117);
+            // 
             // rectangleShape2
             // 
             this.rectangleShape2.Location = new System.Drawing.Point(103, 112);
@@ -218,19 +226,24 @@
             this.lblPickCorPanel.TabIndex = 15;
             this.lblPickCorPanel.Text = "Select correct panel:";
             // 
-            // rectangleShape1
+            // linkGithub
             // 
-            this.rectangleShape1.CornerRadius = 5;
-            this.rectangleShape1.Location = new System.Drawing.Point(479, 274);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(170, 117);
+            this.linkGithub.AutoSize = true;
+            this.linkGithub.Location = new System.Drawing.Point(3, 427);
+            this.linkGithub.Name = "linkGithub";
+            this.linkGithub.Size = new System.Drawing.Size(40, 13);
+            this.linkGithub.TabIndex = 16;
+            this.linkGithub.TabStop = true;
+            this.linkGithub.Text = "GitHub";
+            this.linkGithub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkGithub_LinkClicked);
             // 
-            // Game
+            // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(676, 442);
+            this.Controls.Add(this.linkGithub);
             this.Controls.Add(this.lblPickCorPanel);
             this.Controls.Add(this.lblPickStrike);
             this.Controls.Add(this.lblPickingNumber);
@@ -247,9 +260,10 @@
             this.Controls.Add(this.lblPanel0);
             this.Controls.Add(this.btnPick);
             this.Controls.Add(this.shapeContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Game";
+            this.Name = "GameScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game";
             this.ResumeLayout(false);
@@ -277,5 +291,6 @@
         private System.Windows.Forms.Label lblPickStrike;
         private System.Windows.Forms.Label lblPickCorPanel;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
+        private System.Windows.Forms.LinkLabel linkGithub;
     }
 }

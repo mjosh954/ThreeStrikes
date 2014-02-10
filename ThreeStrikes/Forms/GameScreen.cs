@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 using ThreeStrikes.Domain;
-using ThreeStrikes.Forms;
 
-namespace ThreeStrikes
+namespace ThreeStrikes.Forms
 {
     public partial class GameScreen : Form
     {
@@ -247,7 +241,6 @@ namespace ThreeStrikes
         private double SelectPanelProbability()
         {
             double numOfX = 0;
-            double numOfNums = 0;
 
             foreach (Label panelLabel in panelLabels)
             {
@@ -335,6 +328,11 @@ namespace ThreeStrikes
         {
             HelpScreen help = new HelpScreen();
             help.ShowDialog();
+        }
+
+        private void linkGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(@"https://github.com/mjosh954/ThreeStrikes");
         }
     }
 }
